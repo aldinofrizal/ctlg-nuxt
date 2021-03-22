@@ -1,7 +1,9 @@
 <template>
-  <transition-group name="list" class="products-wrapper">
-    <Card v-for="product in products" :key="product.id" :item="product"/>
-  </transition-group>
+  <div class="page-wrapper">
+    <transition-group name="list" class="d-flex flex-wrap justify-content-around">
+      <Card v-for="product in products" :key="product.id" :item="product"/>
+    </transition-group>
+  </div>
 </template>
 
 <script>
@@ -15,13 +17,6 @@ export default {
 </script>
 
 <style lang="scss">
-.products-wrapper {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
 .list-enter-active, .list-leave-active {
   transition: all 2s;
 }

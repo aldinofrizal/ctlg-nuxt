@@ -46,10 +46,60 @@ a {
   font-size: 16px !important;
 }
 
+.font-20 {
+  font-size: 20px !important;
+}
+
 .bold {
   font-weight: bold;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .rounded {
   border-radius: 4px;
+}
+
+.page-wrapper {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+img {
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.justify-content-between {
+  justify-content: space-evenly;
 }
