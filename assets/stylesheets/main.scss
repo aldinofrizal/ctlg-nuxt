@@ -1,9 +1,5 @@
 html {
   font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
     Roboto,
     'Helvetica Neue',
     Arial,
@@ -101,5 +97,66 @@ img {
 }
 
 .justify-content-between {
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-around {
+  align-items: space-around;
+}
+
+.align-items-between {
+  align-items: space-between;
+}
+
+@for $i from 1 through 6 {
+  .m-#{$i} {
+    margin: 0.5rem * $i;
+  }
+  .mt-#{$i} {
+    margin-top: 0.5rem * $i;
+  }
+  .mb-#{$i} {
+    margin-bottom: 0.5rem * $i;
+  }
+  .mr-#{$i} {
+    margin-right: 0.5rem * $i;
+  }
+  .ml-#{$i} {
+    margin-left: 0.5rem * $i;
+  }
+  .mx-#{$i} {
+    margin-right: 0.5rem * $i;
+    margin-left: 0.5rem * $i;
+  }
+  .my-#{$i} {
+    margin-top: 0.5rem * $i;
+    margin-bottom: 0.5rem * $i;
+  }
+  .p-#{$i} {
+    padding: 0.5rem * $i;
+  }
+  .pt-#{$i} {
+    padding-top: 0.5rem * $i;
+  }
+  .pb-#{$i} {
+    padding-bottom: 0.5rem * $i;
+  }
+  .pr-#{$i} {
+    padding-right: 0.5rem * $i;
+  }
+  .pl-#{$i} {
+    padding-left: 0.5rem * $i;
+  }
+  .px-#{$i} {
+    padding-right: 0.5rem * $i;
+    padding-left: 0.5rem * $i;
+  }
+  .py-#{$i} {
+    padding-top: 0.5rem * $i;
+    padding-bottom: 0.5rem * $i;
+  }
 }

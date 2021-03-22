@@ -1,15 +1,15 @@
 <template>
   <NuxtLink :to="`/${item.id}`">
-    <div class="card rounded">
+    <div class="card rounded my-2">
       <div class="image-wrapper">
         <img :src="item.image" :alt="item.name" class="rounded">
       </div>
-      <div class="content">
+      <div class="content p-2">
         <div class="product-title">
-          <p class="font-14">{{ item.name }}</p>
+          <p class="font-14 pb-1">{{ item.name }}</p>
           <p class="bold">{{ formattedPrice }}</p>
         </div>
-        <div class="product-desc font-12">
+        <div class="product-desc font-12 mt-1">
           {{ trimedDescription }}
         </div>
       </div>
@@ -38,8 +38,6 @@ export default {
 
 <style lang="scss">
 .card {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
   cursor: pointer;
   width: 200px;
   border: 1px solid #f2f2f2;
@@ -50,9 +48,8 @@ export default {
     height: 200px;
   }
   .content {
-    padding: 1rem;
+    background-color: white;
     .product-desc {
-      margin-top: .5rem;
       opacity: .6;
     }
   }

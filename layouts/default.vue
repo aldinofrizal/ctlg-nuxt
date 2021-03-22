@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper mx-auto">
+  <div class="app-wrapper mx-auto p-4">
     <Logo />
     <div class="page-content">
       <Nuxt />
@@ -11,8 +11,8 @@
 <script>
 export default {
   beforeCreate() {
+    this.$store.dispatch('getProducts')
     if (!this.$store.state.products.length) {
-      this.$store.dispatch('getProducts')
     }
   }
 }
@@ -21,7 +21,6 @@ export default {
 <style lang="scss">
 .app-wrapper {
   max-width: 1200px;
-  padding: 2rem;
 
   .page-content {
     min-height: 85vh;

@@ -1,46 +1,72 @@
 <template>
   <div class="page-wrapper">
-    <div class="detail_wrapper d-flex flex-row">
-      <div class="images-wrapper d-flex flex-column">
-        <div class="main-image">
-          <img :src="activeImage" :alt="detail.name">
+    <div v-if="detail.id" class="detail-wrapper d-flex flex-row pb-6">
+      <div class="images-wrapper d-flex flex-column mb-5">
+        <div class="main-image mb-4">
+          <img :src="activeImage" :alt="detail.name"/>
         </div>
         <div class="images-list d-flex justify-content-between flex-wrap">
-          <img v-for="(image,index) in images" :src="image" :alt="detail.name" :key="index" @click="changeMainImage(index)"/>
+          <img 
+            v-for="(image,index) in images"
+            :src="image"
+            :alt="detail.name"
+            :key="index"
+            @click="changeMainImage(index)"
+            class="pointer mb-2"
+          />
         </div>
       </div>
-      <div class="content-wrapper">
+      <div class="content-wrapper pr-4 pl-6">
         <p class="font-16 bold">{{ detail.name }}</p>
-        <p class="font-14 brand">{{ detail.brand }}</p>
-        <p class="font-20 bold">{{ formattedPrice }}</p>
-        <p class="font-14">{{ detail.description }}</p>
+        <p class="mb-3 mt-1 font-14 brand mt-1">{{ detail.brand }}</p>
+        <p class="my-3 font-20 bold">{{ formattedPrice }}</p>
+        <p class="my-3 font-14">{{ detail.description }}</p>
 
-        <div class="available-sizes">
-          <p class="font-14 bold">Available sizes</p>
+        <div class="available-sizes mb-6">
+          <p class="my-3 font-14 bold">Available sizes</p>
           <div class="d-flex flex-row flex-wrap">
             <Tag v-for="(size,index) in detail.size" :key="index" :text="String(size)"/>
           </div>
         </div>
-
-        <div class="comment-wrapper">
-          <p class="font-14 bold">Reviews</p>
-          <Comment v-for="(comment, index) in limitedComments" :key="index" :author="comment.name" :text="comment.body" />          
-          <p @click="expandComments = !expandComments" class="font-12 bold pointer text-center">{{ expandCommentText }}</p>
+        <div class="comment-wrapper mt-6">
+          <p class="font-14 bold my-3">Reviews</p>
+          <Comment 
+            v-for="(comment, index) in limitedComments"
+            :key="index"
+            :author="comment.name"
+            :text="comment.body"
+          />          
+          <p 
+            @click="expandComments = !expandComments" 
+            class="font-12 bold pointer text-center"
+          >
+            {{ expandCommentText }}
+          </p>
         </div>
       </div>
     </div>
-    <div class="products-wrapper">
+    <div v-else class="d-flex flex-row justify-content-center page-load-spinner-wrapper align-items-center">
+      <Spinner />
+    </div>
+    <div class="products-wrapper mt-5" v-if="detail.id && otherProducts.length">
       <p class="font-14 bold text-center">People also see</p>
-      <transition-group name="list" class="d-flex justify-content-around scroll-horizontal">
-        <Card v-for="product in otherProducts" :key="product.id" :item="product"/>
+      <transition-group name="list" class="d-flex justify-content-between scroll-horizontal mt-5 p-2">
+        <Card 
+          v-for="(product,index) in otherProducts"
+          :key="index" 
+          :item="product" 
+          class="mr-2"
+        />
       </transition-group>
     </div>
   </div>
 </template>
 
 <script>
+import Spinner from '../components/Spinner.vue'
 const DEFAULT_VIEW_COMMENTS = 4
 export default {
+  components: { Spinner },
   async mounted() {
     await this.fetchDetail()
     await this.fetchFakeComments()
@@ -54,18 +80,8 @@ export default {
     }
   },
   computed: {
-    otherProducts() {
-      let productToShow = []
-      let products = this.$store.state.products
-
-      while (productToShow.length < 5) {
-        let tempIndex = Math.floor(Math.random() * products.length)
-        if (Math.round(Math.random())) {
-          productToShow.push(products[tempIndex])
-        }
-      }
-
-      return productToShow
+    otherProducts() { // dummy products to show
+      return this.$store.state.products.slice(0, 5)
     },
     images() {
       if(this.detail.image && this.detail.images.length) {

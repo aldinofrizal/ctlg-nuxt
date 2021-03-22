@@ -1,7 +1,6 @@
 @import '~/assets/stylesheets/mixin.scss';
-.detail_wrapper {
+.detail-wrapper {
   border-bottom: .5px solid #f2f2f2;
-  padding-bottom: 3rem;
   @include breakpoint(mobile) {
     flex-wrap: wrap;
   }
@@ -14,7 +13,6 @@
   .main-image img{
     height: 500px;
     width: 435px;
-    margin-bottom: 2rem;
 
     @include breakpoint(tablet) {
       width: 100%;
@@ -25,9 +23,7 @@
     img {
       height: 130px;
       width: 90px;
-      object-fit: cover;
       transition: transform .2s;
-      cursor: pointer;
 
       &:hover {
         transform: scale(1.1)
@@ -37,30 +33,15 @@
 }
 .content-wrapper {
   width: 100%;
-  padding-right: 2rem;
-  padding-left: 3rem;
 
   @include breakpoint(mobile) {
     padding-right: 0;
     padding-left: 0;
   }
-
-  p {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .brand {
-    margin-top: .5rem;
-  }
 }
 
-.comment-wrapper {
-  margin-top: 2.5rem;
-}
-
-.products-wrapper {
-  margin-top: 2.5rem;
+.page-load-spinner-wrapper {
+  min-height: 75vh;
 }
 
 .scroll-horizontal {
