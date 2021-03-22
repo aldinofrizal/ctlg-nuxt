@@ -1,18 +1,20 @@
 <template>
-  <div class="card rounded">
-    <div class="image-wrapper">
-      <img :src="item.image" :alt="item.name" class="rounded">
-    </div>
-    <div class="content">
-      <div class="product-title">
-        <p class="font-14">{{ item.name }}</p>
-        <p class="bold">{{ formattedPrice }}</p>
+  <NuxtLink :to="`/${item.id}`">
+    <div class="card rounded">
+      <div class="image-wrapper">
+        <img :src="item.image" :alt="item.name" class="rounded">
       </div>
-      <div class="product-desc font-12">
-        {{ trimedDescription }}
+      <div class="content">
+        <div class="product-title">
+          <p class="font-14">{{ item.name }}</p>
+          <p class="bold">{{ formattedPrice }}</p>
+        </div>
+        <div class="product-desc font-12">
+          {{ trimedDescription }}
+        </div>
       </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <script>
@@ -42,6 +44,7 @@ export default {
   width: 200px;
   border: 1px solid #f2f2f2;
   transition: transform .2s;
+  color: black !important;
   .image-wrapper img {
     width: 100%;
     height: 200px;

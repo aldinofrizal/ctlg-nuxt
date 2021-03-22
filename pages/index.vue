@@ -1,7 +1,7 @@
 <template>
-  <div class="products-wrapper">
-    <Card v-for="(product, index) in products" :key="index" :item="product"/>
-  </div>
+  <transition-group name="list" class="products-wrapper">
+    <Card v-for="product in products" :key="product.id" :item="product"/>
+  </transition-group>
 </template>
 
 <script>
@@ -21,5 +21,12 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+.list-enter-active, .list-leave-active {
+  transition: all 2s;
+}
+.list-enter, .list-leave-to {
+  opacity: 0;
+  transform: translateY(60px);
 }
 </style>

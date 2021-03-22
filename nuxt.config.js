@@ -31,6 +31,12 @@ export default {
   buildModules: [
   ],
 
+  publicRuntimeConfig: {
+    axios: {
+      baseURL: 'https://my-json-server.typicode.com/aldinofrizal/faker-product'
+    }
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios'

@@ -10,7 +10,7 @@ export const mutations = {
 
 export const actions = {
   async getProducts ({ commit }) {
-    const data = await this.$axios.$get('http://localhost:4000/products/')
-    commit('SEt_PRODUCTS', data)
+    const data = await this.$axios.$get('/products')
+    commit('SET_PRODUCTS', data)
   }
 }
