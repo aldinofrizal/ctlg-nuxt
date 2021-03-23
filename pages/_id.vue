@@ -1,6 +1,9 @@
 <template>
   <div class="page-wrapper">
-    <div v-if="detail.id" class="detail-wrapper d-flex flex-row pb-6">
+    <div v-if="onload" class="d-flex flex-row justify-content-center h-75 align-items-center">
+      <Spinner />
+    </div>
+    <div v-else class="detail-wrapper d-flex flex-row pb-6">
       <div class="images-wrapper d-flex flex-column mb-5">
         <div class="main-image mb-4">
           <img :src="activeImage" :alt="detail.name"/>
@@ -17,11 +20,12 @@
         </div>
       </div>
       <div class="content-wrapper pr-4 pl-6">
-        <p class="font-16 bold">{{ detail.name }}</p>
-        <p class="mb-3 mt-1 font-14 brand mt-1">{{ detail.brand }}</p>
-        <p class="my-3 font-20 bold">{{ formattedPrice }}</p>
-        <p class="my-3 font-14">{{ detail.description }}</p>
-
+        <DetailProduct 
+          :name="detail.name"
+          :brand="detail.brand"
+          :price="formattedPrice"
+          :description="detail.description"
+        />
         <div class="available-sizes mb-6">
           <p class="my-3 font-14 bold">Available sizes</p>
           <div class="d-flex flex-row flex-wrap">
@@ -45,9 +49,6 @@
         </div>
       </div>
     </div>
-    <div v-else class="d-flex flex-row justify-content-center page-load-spinner-wrapper align-items-center">
-      <Spinner />
-    </div>
     <div class="products-wrapper mt-5" v-if="detail.id && otherProducts.length">
       <p class="font-14 bold text-center">People also see</p>
       <transition-group name="list" class="d-flex justify-content-between scroll-horizontal mt-5 p-2">
@@ -63,10 +64,8 @@
 </template>
 
 <script>
-import Spinner from '../components/Spinner.vue'
 const DEFAULT_VIEW_COMMENTS = 4
 export default {
-  components: { Spinner },
   async mounted() {
     await this.fetchDetail()
     await this.fetchFakeComments()
@@ -105,6 +104,9 @@ export default {
       } else {
         return this.comments.slice(0, DEFAULT_VIEW_COMMENTS)
       }
+    },
+    onload() {
+      return !this.detail.id
     }
   },
   methods: {

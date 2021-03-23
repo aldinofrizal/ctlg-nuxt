@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded">
+  <div class="rounded p-1 mr-1 mb-2">
     {{ text }}
   </div>
 </template>

@@ -112,6 +112,10 @@ img {
   align-items: space-between;
 }
 
+.h-75 {
+  min-height: 75vh;
+}
+
 @for $i from 1 through 6 {
   .m-#{$i} {
     margin: 0.5rem * $i;

@@ -4,7 +4,7 @@ export const state = () => ({
 
 export const mutations = {
   SET_PRODUCTS(state, products) {
-    state.products = [ ...state.products, ...products]
+    state.products = products
   }
 }
 
