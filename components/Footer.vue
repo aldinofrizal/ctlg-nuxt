@@ -1,6 +1,6 @@
 <template>
   <div class="footer-wrapper">
-    <p>Evermos frontend test. product catalogue mockup using nuxtjs</p>
+    <p>Product catalogue mockup using nuxtjs</p>
   </div>
 </template>
 
